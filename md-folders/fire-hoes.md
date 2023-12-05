@@ -2,7 +2,7 @@
 
 ## Firehoes
 
-![firehoes](./fire-hoes.md)
+![firehoes](../public/fire-hoes.md)
 
 - 기존 Kinesis DataStream의 Producer를 Lambda로 둘수있지만, 중복이 발생할 수있다.
 - 여러가지 부분에서 문제가 많기때문에 왠만하면 DataStream -> Firehoes로 진행한다.
