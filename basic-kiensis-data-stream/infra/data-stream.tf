@@ -1,3 +1,40 @@
+## S3
+################################################################################
+### S3 Bucket
+################################################################################
+resource "aws_s3_bucket" "data-log-bucket" {
+  bucket = "dk-log-bucket"
+
+  tags = {
+    Name = "dk-log-bucket"
+  }
+}
+
+################################################################################
+### S3 Bucket Policy
+################################################################################
+resource "aws_s3_bucket_policy" "bucket-policy-kinesis" {
+  bucket = aws_s3_bucket.data-log-bucket.id
+
+  policy = jsonencode({
+    "Version" : "2012-10-17",
+    "Statement" : [
+      {
+        "Sid" : "Statement1",
+        "Effect" : "Allow",
+        "Principal" : {
+          "Service" : "kinesis.amazonaws.com"
+        },
+        "Action" : "s3:PutObject",
+        "Resource" : [
+          "${aws_s3_bucket.data-log-bucket.arn}",
+          "${aws_s3_bucket.data-log-bucket.arn}/*"
+        ]
+      }
+    ]
+  })
+}
+
 ## DataStream
 resource "aws_kinesis_stream" "my-console-stream" {
   name                      = "my-console-stream"
@@ -16,7 +53,7 @@ resource "aws_kinesis_stream" "my-console-stream" {
 }
 
 ## Data Firehoes
-## 하기 귀찮음...
+## 하기 귀찮음아서 그냥 넣었음..
 resource "aws_kinesis_firehose_delivery_stream" "extended_s3" {
   name        = "my-console-stream"
   destination = "extended_s3"

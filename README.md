@@ -7,7 +7,3 @@
 ## Kinesis Firehoes
 
 [kinesis-firehoes](./md-folders/fire-hoes.md)
-
-## Kinesis Analytics
-
-[kinesis-anytcis](./md-folders/analytics.md)

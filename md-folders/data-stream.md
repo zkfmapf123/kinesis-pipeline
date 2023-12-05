@@ -30,7 +30,9 @@
 
 ![pubsub-2](../public/pubsub-2.png)
 
-## Example 1) Kinesis DataStream + AWS Cli를 활용한 Data Produce
+## Example 1) Kinesis DataStream + AWS SDK 활용한 Data Produce
+
+![kinesis-1](../public/kinesis-1.png)
 
 ```sh
 
